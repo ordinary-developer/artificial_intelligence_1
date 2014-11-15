@@ -1,0 +1,17 @@
+language: python
+python:
+    - "3.3"
+# command to install dependencies
+install:
+    - "pip install nose"
+    - "pip install nose-cov"
+    - "pip install rednose"
+#blacklist
+#
+#whitelist
+branches:
+    only:
+        - master
+        - develop
+# command to  run tests
+script: nosetests ./test/unit --with-coverage --rednose
