@@ -11,7 +11,7 @@ install:
 #whitelist
 branches:
     only:
-        - master
+#        - master
         - develop
 # command to  run tests
 script: nosetests ./test/unit --with-coverage --rednose
