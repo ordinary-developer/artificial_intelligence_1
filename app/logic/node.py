@@ -10,6 +10,8 @@ class Node:
         self.children = []
 
     def __eq__(self, other):
+        if not isinstance(other, Node):
+            return False
         return True if self.id == other.id else False
 
     def __ne__(self, other):
