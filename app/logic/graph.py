@@ -24,7 +24,7 @@ class Graph:
             parent_node.add_child(child_node)
 
     def depth_first_search(self, node_id):
-        #[initialize]
+        #[initializing]
         cs = self.root
         sl = [self.root]
         nsl = [self.root]
@@ -42,11 +42,28 @@ class Graph:
                 else:
                     while len(sl) != 0 and cs == sl[0]:
                         dl.insert(0, cs)
-                        sl.pop()
-                        nsl.pop()
+                        sl.pop(0) 
+                        nsl.pop(0) 
                         if len(nsl) != 0:
                             cs = nsl[0]
                     sl.insert(0, cs)
+        raise NodeNotFoundException("Can't find the node")
+
+    def breadth_first_search(self, node_id):
+        #[initializing]
+        open_list = [self.root]
+        closed_list = []
+        #[working]
+        while len(open_list) > 0:
+            cs = open_list.pop(0)
+            if not cs in closed_list:
+                closed_list.insert(0, cs)
+            if cs.id == node_id:
+                return self.get_string_representation(closed_list)
+            else:
+                if (len(cs.children) != 0):
+                    for child in cs.children:
+                        open_list.append(child)
         raise NodeNotFoundException("Can't find the node")
 
     def get_string_representation(self, source_list):

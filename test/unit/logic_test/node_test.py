@@ -68,7 +68,6 @@ class TestNode(unittest.TestCase):
         self.assertEqual(1, len(child_node.parents))
         self.assertEqual(parent_node1, child_node.parents[0])
         
-        
     def test_add_child_node(self):
         #[ARRANGE]
         parent_node = Node("A")

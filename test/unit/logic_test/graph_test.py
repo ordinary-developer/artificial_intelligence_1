@@ -110,3 +110,109 @@ class TestGraph(unittest.TestCase):
         #[ACT]-[ASSERT]
         with self.assertRaises(NodeNotFoundException):
             graph.depth_first_search("E")
+
+    def test_depth_first_search_control_example(self):
+        #[ARRANGE]
+        # 1-st layer
+        graph = Graph()
+        # 2-nd layer
+        graph.add_link("A", "B")
+        graph.add_link("A", "C")
+        graph.add_link("A", "D")
+        # 3-d layer
+        graph.add_link("B", "E")
+        graph.add_link("B", "F")
+        graph.add_link("C", "G")
+        graph.add_link("C", "H")
+        graph.add_link("D", "I")
+        graph.add_link("D", "J")
+        # 4-th layer
+        graph.add_link("E", "K")
+        graph.add_link("E", "L")
+        graph.add_link("F", "L")
+        graph.add_link("F", "M")
+        graph.add_link("G", "N")
+        graph.add_link("H", "O")
+        graph.add_link("H", "P")
+        graph.add_link("I", "P")
+        graph.add_link("I", "Q")
+        graph.add_link("J", "R")
+        # additional links
+        graph.add_link("C", "M")
+        graph.add_link("D", "Q")
+        #[ACT]
+        string_result = graph.depth_first_search("I")
+        #[ASSERT]
+        self.assertEqual("A->D->I", string_result)
+    
+    def test_breadth_first_search_simple_mode(self):
+        #[ARRANGE]
+        graph = Graph()
+        #[ACT]
+        string_result = graph.breadth_first_search("A")
+        #[ASSERT]
+        self.assertEqual('A', string_result)
+
+    def test_breadth_first_search_normal_mode_1(self):
+        #[ARRANGE]
+        graph = Graph()
+        graph.add_link("A", "B")
+        graph.add_link("B", "C")
+        #[ACT]
+        string_result = graph.breadth_first_search("C")
+        #[ASSERT]
+        self.assertEqual('A->B->C', string_result)
+
+    def test_breadth_first_search_normal_mode_2(self):
+        #[ARRANGE]
+        graph = Graph()
+        graph.add_link("A", "B")
+        graph.add_link("B", "C")
+        graph.add_link("B", "D")
+        #[ACT]
+        string_result = graph.breadth_first_search("D")
+        #[ASSERT]
+        self.assertEqual('A->B->C->D', string_result)
+
+    def test_breadth_first_search_with_exception(self):
+        #[ARRANGE]
+        graph = Graph()
+        graph.add_link("A", "B")
+        #[ACT]-[ASSERT]
+        with self.assertRaises(NodeNotFoundException):
+            graph.breadth_first_search("E")
+
+    def test_breadth_first_search_control_example(self):
+        #[ARRANGE]
+        # 1-st layer
+        graph = Graph()
+        # 2-nd layer
+        graph.add_link("A", "B")
+        graph.add_link("A", "C")
+        graph.add_link("A", "D")
+        # 3-d layer
+        graph.add_link("B", "E")
+        graph.add_link("B", "F")
+        graph.add_link("C", "G")
+        graph.add_link("C", "H")
+        graph.add_link("D", "I")
+        graph.add_link("D", "J")
+        # 4-th layer
+        graph.add_link("E", "K")
+        graph.add_link("E", "L")
+        graph.add_link("F", "L")
+        graph.add_link("F", "M")
+        graph.add_link("G", "N")
+        graph.add_link("H", "O")
+        graph.add_link("H", "P")
+        graph.add_link("I", "P")
+        graph.add_link("I", "Q")
+        graph.add_link("J", "R")
+        # additional links
+        #graph.add_link("C", "M")
+        #graph.add_link("D", "Q")
+        #[ACT]
+        string_result = graph.breadth_first_search("N")
+        #[ASSERT]
+        self.assertEqual("A->B->C->D->E->F->G->H->I->J->K->L->M->N", string_result)
+

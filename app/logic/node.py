@@ -16,7 +16,7 @@ class Node:
 
     def __ne__(self, other):
         if not isinstance(other, Node):
-            return False
+            return True 
         return True if self.id != other.id else False
 
     def add_parent(self, parent_node):
@@ -36,19 +36,6 @@ class Node:
         else:
             for current_node in self.children:
                 node = current_node.find_node(id)
-                if (node != None):
-                    break;
-        return node
-        '''
-        node = None
-        if self.id == id:
-            return self
-        if len(self.children) == 0:
-            return None
-        else:
-            for current_node in children:
-                node = current_node.find_node(id)
                 if node != None:
                     break
         return node
-        '''
