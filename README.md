@@ -1,4 +1,5 @@
-artificial_intelligence_lab_1
+artificial_intelligence_1
 =============================
 
-The first laboratory work
+The first attempt to implement graph search methods 
+(depth-first and breadth-first)
